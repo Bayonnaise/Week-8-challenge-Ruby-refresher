@@ -156,7 +156,7 @@ describe 'the Friday test :)' do
     expect(n).to eq '31/10/2013'
   end
 
-  fspecify 'get_domain_name_from_email_address' do
+  specify 'get_domain_name_from_email_address' do
     n = get_domain_name_from_email_address 'alex@makersacademy.com'
     expect(n).to eq 'makersacademy'
   end
@@ -166,12 +166,12 @@ describe 'the Friday test :)' do
     expect(n).to eq 'The Lion the Witch and the Wardrobe'
   end
 
-  specify 'check_a_string_for_special_characters' do
+  fspecify 'check_a_string_for_special_characters' do
     a = check_a_string_for_special_characters 'ABCdef123'
     b = check_a_string_for_special_characters 'ABC@def123!'
 
-    expect(a).to be_false
-    expect(b).to be_true
+    expect(a).to be false
+    expect(b).to be true
   end
 
   specify 'get_upper_limit_of' do
