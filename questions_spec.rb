@@ -116,7 +116,7 @@ describe 'the Friday test :)' do
     expect(n).to eq [1, 3, 5, 4, 1, 2]
   end
 
-  fspecify 'convert_array_to_a_hash' do
+  specify 'convert_array_to_a_hash' do
     n = convert_array_to_a_hash ['a', 'b', 'c', 'd']
     expect(n).to eq({'a' => 'b', 'c' => 'd'})
   end
@@ -156,7 +156,7 @@ describe 'the Friday test :)' do
     expect(n).to eq '31/10/2013'
   end
 
-  specify 'get_domain_name_from_email_address' do
+  fspecify 'get_domain_name_from_email_address' do
     n = get_domain_name_from_email_address 'alex@makersacademy.com'
     expect(n).to eq 'makersacademy'
   end
