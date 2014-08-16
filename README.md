@@ -1,24 +1,8 @@
-## Friday test!
+## Week 8 Friday test - Ruby refresher
 
-Here we're going to revisit the basics of Ruby. There are 41 questions - you don't have to do every single one (although if you can, that's great). You should be able to do at least 50% of them. They vary in level from quite easy to fairly hard. Work through them and check if they're correct by running the specs.
+### Objectives
 
-You should be able to answer most questions with a couple of lines of code, and just a few methods. If you're writing a long, complex solution, there's probably a better way.
-
-To run the specs, just run
-
-~~~
-$ rspec questions_spec.rb
-~~~
-
-**Quick tip**: to run a single example, change `it` to `fit` on that example, then run
-
-~~~
-$ rspec questions_spec.rb --tag focus
-~~~
-
-Also, don't spend the whole weekend on this. Try and do the bulk of them today, revisit it a bit this weekend if you want. Spend the weekend consolodating the stuff we've covered on Rails and JS, and carrying on with your yelp apps :smile:
-
-Good luck
+This week's challenge was to revisit the fundamentals of Ruby. We were given an rspec file with 39 tests, and had to make them all pass by writing simple and short methods. Two final challenges has no tests to turn green, but built on things we'd previously learned.
 
 ### Rules
 
