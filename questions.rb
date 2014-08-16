@@ -1,3 +1,5 @@
+require 'date'
+
 # keep only the elements that start with an a
 def select_elements_starting_with_a(array)
 	array.select { |element| element.downcase.start_with?('a') }
@@ -201,25 +203,29 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
-	string.include?("[^a-zA-Z\d]")
+	
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+	range.max
 end
 
 # should return true for a 3 dot range like 1...20, false for a 
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+	range.exclude_end?
 end
 
 # get the square root of a number
 def square_root_of(number)
+	Math.sqrt(number)
 end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+	File.read(file_path).split.count
 end
 
 # --- tougher ones ---
@@ -228,18 +234,37 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+	str_method.call
 end
 
 # return true if the date is a uk bank holiday for 2014
 # the list of bank holidays is here:
 # https://www.gov.uk/bank-holidays
 def is_a_2014_bank_holiday?(date)
+	holidays = [	Time.new(2014, 12, 26),
+								Time.new(2014, 12, 25),
+								Time.new(2014, 8, 25), 
+								Time.new(2014, 5, 26),
+								Time.new(2014, 5, 5),
+								Time.new(2014, 4, 21),
+								Time.new(2014, 4, 18),
+								Time.new(2014, 1, 1)
+							]
+	holidays.include?(date)		
 end
 
 # given your birthday this year, this method tells you
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 def your_birthday_is_on_a_friday_in_the_year(birthday)
+	a_year = 60*60*24*365
+	a_leap_year = 60*60*24*366
+
+	return birthday.year if birthday.friday?
+	
+	Date.leap?(birthday.year) ? birthday += a_leap_year : birthday += a_year
+
+	your_birthday_is_on_a_friday_in_the_year(birthday)
 end
 
 # in a file, total the number of times words of different lengths
