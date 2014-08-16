@@ -187,15 +187,11 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
-	exclusions = %w(a the and)
+	exclusions = %w(a the and of)
 	words = string.split
 	words.first.capitalize!
 	words.map do |word|
-		if exclusions.include? word
-			word
-		else
-			word.capitalize
-		end
+		exclusions.include?(word) ? word : word.capitalize 
 	end.join(' ')
 end
 
@@ -275,7 +271,7 @@ end
 def count_words_of_each_length_in_a_file(file_path)
 	words = File.read(file_path).split(/\W+/)
 	counter = Hash.new(0)
-	
+
 	words.each { |word| counter[word.length] += 1 }
 
 	counter
@@ -285,6 +281,17 @@ end
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
+	(1..100).each do |number|
+		if number.remainder(15) == 0
+			puts "fizzbuzz"
+		elsif number.remainder(5) == 0
+			puts "buzz"
+		elsif number.remainder(3) == 0
+			puts "fizz"
+		else
+			puts number
+		end
+	end
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
@@ -294,4 +301,13 @@ end
 # at the end.
 # (there's no RSpec test for this one)
 def ninety_nine_bottles_of_beer
+	word = "bottles"
+	(1..99).reverse_each do |number|
+		puts "#{number} #{word} of beer on the wall, #{number} #{word} of beer."
+		number -= 1
+		number == 1 ? word = "bottle" : word = "bottles"
+		number = "no more" if number == 0
+		puts "Take one down and pass it around, #{number} #{word} of beer on the wall."
+	end
+	puts "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall."
 end

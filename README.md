@@ -2,7 +2,7 @@
 
 ### Objectives
 
-This week's challenge was to revisit the fundamentals of Ruby. We were given an rspec file with 39 tests, and had to make them all pass by writing simple and short methods. Two final challenges has no tests to turn green, but built on things we'd previously learned.
+This week's challenge was to revisit the fundamentals of Ruby. We were given an rspec file with 39 tests, and had to make them all pass by writing simple and short methods. Two final challenges had no tests to turn green, but built on things we'd previously learned.
 
 ### Rules
 
