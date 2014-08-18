@@ -7,7 +7,7 @@ end
 
 # keep only the elements that start with a vowel
 def select_elements_starting_with_vowel(array)
-	array.select { |element| /^[aeiou].*/.match(element.downcase) }
+	array.select { |element| element =~ /\A[aeiou]/i }
 end
 
 # remove instances of nil (but NOT false) from an array
@@ -17,7 +17,7 @@ end
 
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
-	array.compact.reject { |element| element == false }
+	array.reject(&:!)
 end
 
 # don't reverse the array, but reverse every word inside it. e.g.
@@ -100,7 +100,7 @@ end
 # turn an array into itself repeated twice. So [1, 2, 3]
 # becomes [1, 2, 3, 1, 2, 3]
 def double_array(array)
-	array.concat(array)
+	array * 2
 end
 
 # convert a symbol into a string
@@ -126,7 +126,7 @@ end
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
-	Hash[*array.flatten]
+	Hash[*array]
 end
 
 # get all the letters used in an array of words and return
@@ -134,7 +134,7 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
-	array.map(&:chars).flatten.uniq.sort
+	array.join.chars.uniq.sort
 end
 
 # swap the keys and values in a hash. e.g.
@@ -254,13 +254,10 @@ end
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 def your_birthday_is_on_a_friday_in_the_year(birthday)
-	a_year = 60*60*24*365
-	a_leap_year = 60*60*24*366
-
-	return birthday.year if birthday.friday?
-	Date.leap?(birthday.year) ? birthday += a_leap_year : birthday += a_year
-
-	your_birthday_is_on_a_friday_in_the_year(birthday)
+	until birthday.friday?
+		birthday = Time.new birthday.year + 1, birthday.month, birthday.day
+	end
+	birthday.year
 end
 
 # in a file, total the number of times words of different lengths
