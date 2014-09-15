@@ -17,4 +17,4 @@ This week's challenge was to revisit the fundamentals of Ruby. We were given an 
 * Try and break down the problems into smaller chunks. For e.g. if you google "How to select elements in an array that start with a", you won't have much luck. Try and find out a) how to select certain elements in an array, b) how to test if a string starts with an 'a'
 * Don't forget Enumerable (advanced array methods)
 * Read the specs and the comments - if you're still confused, just ask.
-* Don't panic :wink:
+* Don't panic
